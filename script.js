@@ -24,7 +24,8 @@ const gameBoardDiv = document.getElementById('game-board')
 const gameBoard = (function() {
 
     let gameBoard = [0, 1, 2, 3, 4, 5, 6, 7, 8]
-    let gameScore = [null, null, null, null, null, null, null, null, null]
+    let gameSymbols = [null, null, null, null, null, null, null, null, null]
+    let player = true
 
 
     const drawGameBoard = () => {
@@ -35,23 +36,30 @@ const gameBoard = (function() {
             box.dataset.index = `${item}`
 
             box.addEventListener('click', (e) => {
-                game(e, e.target.dataset.index)
+                drawSymbol(e, e.target.dataset.index)
             })
 
             gameBoardDiv.appendChild(box)
         })
     }
 
-    const game = (e, index) => {
-        if(gameScore[index] === null) {
+    const drawSymbol = (e, index) => {
+        if(gameSymbols[index] === null) {
             if(player) {
                 e.target.innerHTML = 'X'
+                handleGameSymbols(index)
+                
             } else {
                 e.target.innerHTML = 'O'
+                handleGameSymbols(index)
             }
         } else {
-
         }
+    }
+
+    const handleGameSymbols = (index) => {
+        gameSymbols[index] = player
+        player = !player
     }
 
 
