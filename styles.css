@@ -1,7 +1,14 @@
 #game-board {
     display: grid;
-    grid-template-columns: repeat(3, 200px);
-    grid-template-rows: repeat(3, 200px);
+    grid-template-columns: repeat(3, 150px);
+    grid-template-rows: repeat(3, 150px);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
 }
 
 .box {

@@ -80,9 +80,16 @@ const gameBoard = (function() {
     const handleWin = () => {
         winCombinations.forEach(item => {
             if(item.every(item => player1.combination.includes(item))) {
-                alert('X wins, end of the game')
+                setTimeout(() => {
+                    alert('X wins, end of the game')
+                    location.reload()
+                }, 200);
+                
             } else if (item.every(item => player2.combination.includes(item))) {
-                console.log('O wins, end of the game')
+                setTimeout(() => {
+                    alert('O wins, end of the game')
+                    location.reload()
+                }, 200);
             }
         })
     }
