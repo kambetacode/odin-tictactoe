@@ -91,7 +91,7 @@ const gameBoard = (function() {
                 setTimeout(() => {
                     modal.classList.add('active')
                     overlay.classList.add('active')
-                    modalP.innerHTML = 'X WON'
+                    modalP.innerHTML = 'Player X Wins!'
                     
                 }, 200);
                 
@@ -99,7 +99,7 @@ const gameBoard = (function() {
                 setTimeout(() => {
                     modal.classList.add('active')
                     overlay.classList.add('active')
-                    modalP.innerHTML = 'O WON'
+                    modalP.innerHTML = 'Player O Wins!'
 
                     
                 }, 200);

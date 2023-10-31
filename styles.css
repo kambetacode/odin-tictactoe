@@ -1,3 +1,13 @@
+body {
+    font-family: Roboto, sans-serif;
+    background-color: #B9F3E4;
+}
+
+main>h1 {
+    color: #EA8FEA;
+    font-size: 45px;
+}
+
 #game-board {
     display: grid;
     grid-template-columns: repeat(3, 150px);
@@ -11,34 +21,58 @@ main {
 }
 
 .box {
-    border: 1px solid black;
+    border: 1px solid #EA8FEA;
+    border-radius: 5px;
     font-size: 100px;
     text-align: center;
+    background-color: #F6E6C2;
 }
 
 .box:hover {
     cursor: pointer;
-    background-color: gray;
+    background-color: #FFAACF;
 }
 
 .modal {
-    display: none;
+    display: flex;
     flex-direction: column;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(0);
+    transition: 0.2s ease-in-out;
     align-items: center;
     justify-content: center;
-    height: 200px;
-    width: 200px;
-    background-color: white;
+    height: 300px;
+    width: 300px;
+    background-color: #B9F3E4;
     border: 1px solid black;
+    border-radius: 5px;
     z-index: 2;
 }
 
 .modal.active {
-    display: flex;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.modal>p {
+    font-size: 35px;
+    color: #FFAACF;
+}
+
+#reset-btn {
+    background-color: #FFAACF;
+    border-style: none;
+    height: 50px;
+    width: 60%;
+    border-radius: 5px;
+    font-size: 20px;
+    color: #F6E6C2;
+}
+
+#reset-btn:hover {
+    cursor: pointer;
+    background-color: #EA8FEA;
 }
 
 .overlay {
