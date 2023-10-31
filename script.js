@@ -1,23 +1,29 @@
 // Interface
 const main = document.querySelector('main')
 const gameBoardDiv = document.getElementById('game-board')
-const winCombinations = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6]
-] 
+const modal = document.getElementById('modal')
+const modalP = document.getElementById('modal-p')
+const overlay = document.getElementById('overlay')
+const resetButton = document.getElementById('reset-btn')
 
 //
+
+
 
 const gameBoard = (function() {
 
     let gameBoard = [0, 1, 2, 3, 4, 5, 6, 7, 8]
     let gameSymbols = [null, null, null, null, null, null, null, null, null]
+    const winCombinations = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6]
+    ] 
     let player = true
     
     let player1 = {
@@ -52,11 +58,13 @@ const gameBoard = (function() {
         if(gameSymbols[index] === null) {
             if(player) {
                 e.target.innerHTML = 'X'
+                e.target.style.color = '#4e40b3'
                 handleGameSymbols(index)
                 handlePlayer(true, index)
                 
             } else {
                 e.target.innerHTML = 'O'
+                e.target.style.color = '#f0463a'
                 handleGameSymbols(index)
                 handlePlayer(false, index)
             }
@@ -81,23 +89,41 @@ const gameBoard = (function() {
         winCombinations.forEach(item => {
             if(item.every(item => player1.combination.includes(item))) {
                 setTimeout(() => {
-                    alert('X wins, end of the game')
-                    location.reload()
+                    modal.classList.add('active')
+                    overlay.classList.add('active')
+                    modalP.innerHTML = 'X WON'
+                    
                 }, 200);
                 
             } else if (item.every(item => player2.combination.includes(item))) {
                 setTimeout(() => {
-                    alert('O wins, end of the game')
-                    location.reload()
+                    modal.classList.add('active')
+                    overlay.classList.add('active')
+                    modalP.innerHTML = 'O WON'
+
+                    
                 }, 200);
+            } else if (gameSymbols.every((item) => {
+                return item !== null
+            })) {
+                modal.classList.add('active')
+                    overlay.classList.add('active')
+                    modalP.innerHTML = 'DRAW!' 
             }
         })
     }
 
+    const reload = () => {
+        window.location.reload()
+    }
+
 
     return {
-        drawGameBoard
+        drawGameBoard,
+        reload
     }
 })();
 
 gameBoard.drawGameBoard()
+
+resetButton.onclick = gameBoard.reload
