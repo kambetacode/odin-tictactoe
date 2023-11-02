@@ -30,6 +30,8 @@ main {
 }
 
 .box {
+    height: 100%;
+    width: 100%;
     border: 1px solid #EA8FEA;
     border-radius: 5px;
     font-size: 80px;
