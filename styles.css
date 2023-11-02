@@ -102,5 +102,10 @@ main {
     .box {
         font-size: 140px;
     }
+
+    #game-board {
+        height: 500px;
+        width: 500px;
+    }
 }
 
